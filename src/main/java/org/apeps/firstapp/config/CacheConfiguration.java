@@ -43,6 +43,10 @@ public class CacheConfiguration {
             cm.createCache(org.apeps.firstapp.domain.User.class.getName() + ".authorities", jcacheConfiguration);
             cm.createCache(org.apeps.firstapp.domain.PersistentToken.class.getName(), jcacheConfiguration);
             cm.createCache(org.apeps.firstapp.domain.User.class.getName() + ".persistentTokens", jcacheConfiguration);
+            cm.createCache(org.apeps.firstapp.domain.Offering.class.getName(), jcacheConfiguration);
+            cm.createCache(org.apeps.firstapp.domain.Offering.class.getName() + ".prices", jcacheConfiguration);
+            cm.createCache(org.apeps.firstapp.domain.Offering.class.getName() + ".childs", jcacheConfiguration);
+            cm.createCache(org.apeps.firstapp.domain.Price.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }
