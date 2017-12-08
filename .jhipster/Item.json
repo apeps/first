@@ -8,8 +8,8 @@
             "otherEntityField": "id"
         },
         {
-            "relationshipName": "customer",
-            "otherEntityName": "customer",
+            "relationshipName": "cart",
+            "otherEntityName": "cart",
             "relationshipType": "many-to-one",
             "otherEntityField": "id"
         }
@@ -34,7 +34,7 @@
     "changelogDate": "20171118104226",
     "entityTableName": "item",
     "dto": "no",
-    "pagination": "infinite-scroll",
+    "pagination": "pagination",
     "service": "serviceClass",
     "jpaMetamodelFiltering": false
 }

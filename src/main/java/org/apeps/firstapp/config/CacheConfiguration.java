@@ -48,6 +48,8 @@ public class CacheConfiguration {
             cm.createCache(org.apeps.firstapp.domain.Category.class.getName() + ".items", jcacheConfiguration);
             cm.createCache(org.apeps.firstapp.domain.Customer.class.getName(), jcacheConfiguration);
             cm.createCache(org.apeps.firstapp.domain.Customer.class.getName() + ".items", jcacheConfiguration);
+            cm.createCache(org.apeps.firstapp.domain.Cart.class.getName(), jcacheConfiguration);
+            cm.createCache(org.apeps.firstapp.domain.Cart.class.getName() + ".items", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

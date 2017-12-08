@@ -17,17 +17,17 @@
     <div class="table-responsive">
         <table class="jh-table table table-striped">
             <thead>
-                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
                     <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="name"><span>Name</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="description"><span>Description</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="price"><span>Price</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="category.id"><span>Category</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="customer.id"><span>Customer</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cart.id"><span>Cart</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
-            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+            <tbody>
                 <tr ng-repeat="item in vm.items track by item.id">
                     <td><a ui-sref="item-detail({id:item.id})">{{item.id}}</a></td>
                     <td>{{item.name}}</td>
@@ -37,7 +37,7 @@
                         <a ui-sref="category-detail({id:item.category.id})">{{item.category.id}}</a>
                     </td>
                     <td>
-                        <a ui-sref="customer-detail({id:item.customer.id})">{{item.customer.id}}</a>
+                        <a ui-sref="cart-detail({id:item.cart.id})">{{item.cart.id}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
@@ -64,5 +64,9 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
     </div>
 </div>

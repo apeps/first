@@ -5,15 +5,23 @@
         .module('firstApp')
         .controller('CustomerDialogController', CustomerDialogController);
 
-    CustomerDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Customer', 'Item'];
+    CustomerDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'entity', 'Customer', 'Cart'];
 
-    function CustomerDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Customer, Item) {
+    function CustomerDialogController ($timeout, $scope, $stateParams, $uibModalInstance, $q, entity, Customer, Cart) {
         var vm = this;
 
         vm.customer = entity;
         vm.clear = clear;
         vm.save = save;
-        vm.items = Item.query();
+        vm.carts = Cart.query({filter: 'customer-is-null'});
+        $q.all([vm.customer.$promise, vm.carts.$promise]).then(function() {
+            if (!vm.customer.cart || !vm.customer.cart.id) {
+                return $q.reject();
+            }
+            return Cart.get({id : vm.customer.cart.id}).$promise;
+        }).then(function(cart) {
+            vm.carts.push(cart);
+        });
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

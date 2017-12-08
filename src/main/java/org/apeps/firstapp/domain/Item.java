@@ -37,7 +37,7 @@ public class Item implements Serializable {
     private Category category;
 
     @ManyToOne
-    private Customer customer;
+    private Cart cart;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -100,17 +100,17 @@ public class Item implements Serializable {
         this.category = category;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public Cart getCart() {
+        return cart;
     }
 
-    public Item customer(Customer customer) {
-        this.customer = customer;
+    public Item cart(Cart cart) {
+        this.cart = cart;
         return this;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setCart(Cart cart) {
+        this.cart = cart;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
