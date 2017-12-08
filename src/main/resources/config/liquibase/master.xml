@@ -10,8 +10,5 @@
     <include file="config/liquibase/changelog/20171118104228_added_entity_Customer.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20171208125341_added_entity_Cart.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
-    <include file="config/liquibase/changelog/20171118104226_added_entity_constraints_Item.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20171118104227_added_entity_constraints_Category.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20171118104228_added_entity_constraints_Customer.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>
