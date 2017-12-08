@@ -1,13 +1,10 @@
 package org.apeps.firstapp.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -37,10 +34,9 @@ public class Customer implements Serializable {
     @Column(name = "telephone")
     private String telephone;
 
-    @OneToMany(mappedBy = "customer")
-    @JsonIgnore
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Item> items = new HashSet<>();
+    @OneToOne
+    @JoinColumn(unique = true)
+    private Cart cart;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -103,29 +99,17 @@ public class Customer implements Serializable {
         this.telephone = telephone;
     }
 
-    public Set<Item> getItems() {
-        return items;
+    public Cart getCart() {
+        return cart;
     }
 
-    public Customer items(Set<Item> items) {
-        this.items = items;
+    public Customer cart(Cart cart) {
+        this.cart = cart;
         return this;
     }
 
-    public Customer addItem(Item item) {
-        this.items.add(item);
-        item.setCustomer(this);
-        return this;
-    }
-
-    public Customer removeItem(Item item) {
-        this.items.remove(item);
-        item.setCustomer(null);
-        return this;
-    }
-
-    public void setItems(Set<Item> items) {
-        this.items = items;
+    public void setCart(Cart cart) {
+        this.cart = cart;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

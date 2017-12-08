@@ -37,7 +37,7 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="customer_id" type="bigint">
+            <column name="cart_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 

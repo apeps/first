@@ -2,9 +2,11 @@
     "fluentMethods": true,
     "relationships": [
         {
-            "relationshipType": "one-to-many",
-            "relationshipName": "item",
-            "otherEntityName": "item",
+            "relationshipType": "one-to-one",
+            "relationshipName": "cart",
+            "otherEntityName": "cart",
+            "otherEntityField": "id",
+            "ownerSide": true,
             "otherEntityRelationshipName": "customer"
         }
     ],

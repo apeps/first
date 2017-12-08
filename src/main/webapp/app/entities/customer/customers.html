@@ -23,6 +23,7 @@
                     <th jh-sort-by="lastName"><span>Last Name</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="email"><span>Email</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="telephone"><span>Telephone</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cart.id"><span>Cart</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -33,6 +34,9 @@
                     <td>{{customer.lastName}}</td>
                     <td>{{customer.email}}</td>
                     <td>{{customer.telephone}}</td>
+                    <td>
+                        <a ui-sref="cart-detail({id:customer.cart.id})">{{customer.cart.id}}</a>
+                    </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

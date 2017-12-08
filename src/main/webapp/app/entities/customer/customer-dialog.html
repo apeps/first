@@ -38,6 +38,12 @@
                     />
         </div>
 
+        <div class="form-group">
+            <label for="field_cart">Cart</label>
+            <select class="form-control" id="field_cart" name="cart" ng-model="vm.customer.cart" ng-options="cart as cart.id for cart in vm.carts | orderBy:'id' track by cart.id">
+                <option value=""></option>
+            </select>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">

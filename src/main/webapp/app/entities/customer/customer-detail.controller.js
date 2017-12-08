@@ -5,9 +5,9 @@
         .module('firstApp')
         .controller('CustomerDetailController', CustomerDetailController);
 
-    CustomerDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Customer', 'Item'];
+    CustomerDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Customer', 'Cart'];
 
-    function CustomerDetailController($scope, $rootScope, $stateParams, previousState, entity, Customer, Item) {
+    function CustomerDetailController($scope, $rootScope, $stateParams, previousState, entity, Customer, Cart) {
         var vm = this;
 
         vm.customer = entity;

@@ -3,18 +3,18 @@
 
     angular
         .module('firstApp')
-        .controller('ItemDialogController', ItemDialogController);
+        .controller('CartDialogController', CartDialogController);
 
-    ItemDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Item', 'Category', 'Cart'];
+    CartDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Cart', 'Item', 'Customer'];
 
-    function ItemDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Item, Category, Cart) {
+    function CartDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Cart, Item, Customer) {
         var vm = this;
 
-        vm.item = entity;
+        vm.cart = entity;
         vm.clear = clear;
         vm.save = save;
-        vm.categories = Category.query();
-        vm.carts = Cart.query();
+        vm.items = Item.query();
+        vm.customers = Customer.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
@@ -26,15 +26,15 @@
 
         function save () {
             vm.isSaving = true;
-            if (vm.item.id !== null) {
-                Item.update(vm.item, onSaveSuccess, onSaveError);
+            if (vm.cart.id !== null) {
+                Cart.update(vm.cart, onSaveSuccess, onSaveError);
             } else {
-                Item.save(vm.item, onSaveSuccess, onSaveError);
+                Cart.save(vm.cart, onSaveSuccess, onSaveError);
             }
         }
 
         function onSaveSuccess (result) {
-            $scope.$emit('firstApp:itemUpdate', result);
+            $scope.$emit('firstApp:cartUpdate', result);
             $uibModalInstance.close(result);
             vm.isSaving = false;
         }
